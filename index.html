@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prixetic - Professional Accounting Outsourcing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Mobile Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Mobile Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 24px;
+        }
+
+        .main-title {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        /* Features */
+        .features {
+            margin-bottom: 48px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: white;
+        }
+
+        /* CTA Buttons */
+        .cta-section {
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 18px 24px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        /* Bottom Text */
+        .bottom-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+            text-align: left;
+            padding: 0 4px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 80px 24px;
+            background: #fafafa;
+            position: relative;
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .trust-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .trust-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .trust-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .usp-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .trust-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .trust-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 24px;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .services-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .services-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            background: #fafafa;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            background: white;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 24px;
+            background: #fafafa;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .testimonials-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .testimonials-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin: 0 0 24px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            left: -12px;
+            top: -8px;
+            font-size: 40px;
+            color: rgba(102, 126, 234, 0.3);
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .author-initial {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 4px 0;
+        }
+
+        .author-title {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 4px 0;
+        }
+
+        .author-result {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Desktop Navigation - Hidden on mobile */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Credentials Section */
+        .credentials-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .credentials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .credentials-content {
+            text-align: center;
+        }
+
+        .credentials-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .badge-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: white;
+        }
+
+        .badge-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .credentials-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .credentials-text strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            padding: 80px 24px;
+            background: white;
+        }
+
+        .solutions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .solutions-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .solutions-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .solution-card {
+            background: #fafafa;
+            padding: 32px 24px;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .solution-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .solution-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .solution-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .solution-check {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .solution-check svg {
+            width: 10px;
+            height: 10px;
+            fill: white;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 60px 48px;
+            }
+
+            .main-title {
+                font-size: 48px;
+                text-align: center;
+            }
+
+            .subtitle {
+                font-size: 20px;
+                text-align: center;
+                max-width: 600px;
+                margin: 0 auto 48px;
+            }
+
+            .features {
+                max-width: 500px;
+                margin: 0 auto 48px;
+            }
+
+            .cta-section {
+                display: flex;
+                gap: 16px;
+                max-width: 400px;
+                margin: 0 auto 40px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: auto;
+                flex: 1;
+                margin-bottom: 0;
+            }
+
+            .bottom-text {
+                text-align: center;
+            }
+
+            .trust-section {
+                padding: 100px 48px;
+            }
+
+            .trust-title {
+                font-size: 42px;
+            }
+
+            .trust-subtitle {
+                font-size: 18px;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+
+            .services-section,
+            .testimonials-section {
+                padding: 100px 48px;
+            }
+
+            .services-title,
+            .testimonials-title {
+                font-size: 42px;
+            }
+
+            .services-subtitle,
+            .testimonials-subtitle {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solutions-section {
+                padding: 100px 48px;
+            }
+
+            .solutions-title {
+                font-size: 42px;
+            }
+
+            .solutions-subtitle {
+                font-size: 18px;
+            }
+
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solution-card {
+                padding: 40px 32px;
+            }
+
+            .solution-title {
+                font-size: 22px;
+            }
+
+            .solution-description {
+                font-size: 16px;
+            }
+
+            .solutions-feature {
+                font-size: 15px;
+            }
+
+            .credentials-section {
+                padding: 80px 48px;
+            }
+
+            .credentials-text {
+                font-size: 18px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .hero {
+                padding: 100px 48px;
+                text-align: center;
+            }
+
+            .main-title {
+                font-size: 72px;
+            }
+
+            .subtitle {
+                font-size: 22px;
+                max-width: 700px;
+            }
+
+            .trust-section {
+                padding: 120px 48px;
+            }
+
+            .trust-title {
+                font-size: 56px;
+            }
+
+            .trust-subtitle {
+                font-size: 20px;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .trust-card {
+                padding: 40px 32px;
+            }
+
+            .trust-card h3 {
+                font-size: 20px;
+            }
+
+            .trust-card p {
+                font-size: 16px;
+            }
+
+            .services-section,
+            .testimonials-section {
+                padding: 120px 48px;
+            }
+
+            .services-title,
+            .testimonials-title {
+                font-size: 56px;
+            }
+
+            .services-subtitle,
+            .testimonials-subtitle {
+                font-size: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .desktop-only {
+                display: block;
+            }
+
+            .solutions-section {
+                padding: 120px 48px;
+            }
+
+            .solutions-title {
+                font-size: 56px;
+            }
+
+            .solutions-subtitle {
+                font-size: 20px;
+            }
+
+            .solutions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .solution-card {
+                padding: 48px 40px;
+            }
+
+            .solution-title {
+                font-size: 24px;
+            }
+
+            .solution-description {
+                font-size: 17px;
+            }
+
+            .solution-feature {
+                font-size: 16px;
+            }
+
+            .credentials-section {
+                padding: 100px 48px;
+            }
+
+            .credentials-text {
+                font-size: 20px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .feature:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .trust-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .trust-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .trust-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .trust-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .trust-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .trust-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .trust-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="main-title">
+                Streamline Your<br>
+                <span class="highlight">Accounting Effortlessly</span>
+            </h1>
+
+            <p class="subtitle">
+                Professional accounting outsourcing to reduce costs and improve accuracy. Transform complex financial
+                data into clear insights with our expert team and advanced systems.
+            </p>
+
+            <!-- Mobile Features -->
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                    <span>Real-time reporting and monitoring</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                        </svg>
+                    </div>
+                    <span>Automated bookkeeping and analysis</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <span>Scalable and flexible service options</span>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <a href="#consultation" class="btn-primary">Start Free Consultation</a>
+                <a href="#learn-more" class="btn-secondary">Learn More</a>
+            </div>
+
+            <!-- Bottom Text -->
+            <p class="bottom-text">
+                Leading businesses and startups trust Prixetic's accounting expertise to reduce operational costs and
+                improve financial accuracy by up to 35%.
+            </p>
+        </section>
+
+        <!-- Credentials Section -->
+        <section class="credentials-section">
+            <div class="credentials-container">
+                <div class="credentials-content">
+                    <div class="credentials-badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <span class="badge-text">Series B Experience</span>
+                    </div>
+                    <p class="credentials-text">
+                        Our team of certified accountants brings proven expertise from scaling a Series B startup
+                        through <strong>$47MM+ in fundraising</strong>, giving us deep understanding of high-growth
+                        financial operations and investor requirements.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust & Security Section -->
+        <section id="trust" class="trust-section">
+            <div class="trust-container">
+                <div class="trust-header">
+                    <h2 class="trust-title">Complete Accounting Solutions with <span class="highlight">Expert Human
+                            Support</span></h2>
+                    <p class="trust-subtitle">Full-service bookkeeping, reconciliation, and financial reporting with
+                        dedicated accounting professionals. We work with your existing systems and deliver comprehensive
+                        MIS reporting.</p>
+                </div>
+
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <div class="usp-icon">👥</div>
+                        <h3>Dedicated Human Team</h3>
+                        <p>Experienced accounting professionals handle your books personally with direct communication
+                            and oversight</p>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="usp-icon">🔄</div>
+                        <h3>Works with Any System</h3>
+                        <p>NetSuite, QuickBooks, Xero, or any accounting software you're comfortable with - no forced
+                            migrations</p>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="usp-icon">📊</div>
+                        <h3>Complete MIS Reporting</h3>
+                        <p>Custom dashboards, financial analysis, and management reports tailored to your business needs
+                        </p>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="usp-icon">🤖</div>
+                        <h3>Custom AI Implementation</h3>
+                        <p>Full AI consulting and implementation services - we build and deploy bespoke automation
+                            solutions for your specific workflows at minimal cost</p>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="usp-icon">🌍</div>
+                        <h3>Global Operations Ready</h3>
+                        <p>Multi-entity consolidation, international compliance, and cross-border transaction handling
+                        </p>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="usp-icon">📋</div>
+                        <h3>Full-Service Solution</h3>
+                        <p>Bookkeeping, reconciliations, expense categorization, month-end close, and financial
+                            statement preparation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="services-container">
+                <div class="services-header">
+                    <h2 class="services-title">Our Comprehensive <span class="highlight">Accounting Services</span></h2>
+                    <p class="services-subtitle">We work as an extension of your finance team, handling everything from
+                        routine bookkeeping to strategic financial analysis</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                            </svg>
+                        </div>
+                        <h3>Annual Recurring Revenue (ARR)</h3>
+                        <p>Track changes in ARR/MRR by product type, customer, Account Manager, and sales person with
+                            detailed analytics</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 14V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-5-2H9v1h5v1H8V9h1V8h5v1zm2 1v-1h2v1h-2z" />
+                            </svg>
+                        </div>
+                        <h3>Order to Cash & AR</h3>
+                        <p>End-to-end AR solutions from sales orders to payment collection, managing the entire revenue
+                            cycle</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+                            </svg>
+                        </div>
+                        <h3>Accounts Payable</h3>
+                        <p>Vendor management, timely payments, expense accounts, and employee reimbursements to keep
+                            your supply chain smooth</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                            </svg>
+                        </div>
+                        <h3>Record-to-Report</h3>
+                        <p>Robust R2R process to ensure your business operates efficiently with comprehensive financial
+                            reporting</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v-3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v7h3v4H4z" />
+                            </svg>
+                        </div>
+                        <h3>Payroll Administration</h3>
+                        <p>Weekly, bi-monthly, monthly payroll processing with tax calculations, time-off management,
+                            and detailed reports</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 3v18h18v-2H5V3H3zm14 7.5c0 1.11-.89 2-2 2s-2-.89-2-2 .89-2 2-2 2 .89 2 2zm-3.5 6L10 13l-2 3h8l-2.5-3.5z" />
+                            </svg>
+                        </div>
+                        <h3>Data Analysis & Insights</h3>
+                        <p>Spreadsheet analysis, management dashboards, KPIs and OKRs, usage metrics for informed
+                            decision making</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <div class="testimonials-header">
+                    <h2 class="testimonials-title">What Our <span class="highlight">Clients Say</span></h2>
+                    <p class="testimonials-subtitle">See how Prixetic has helped businesses streamline their accounting
+                        and boost their bottom line</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "Prixetic transformed our financial reporting process. What used to take our team 3 days now
+                            gets completed in hours with incredible accuracy. Our month-end close is now stress-free!"
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span class="author-initial">S</span>
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Sarah Chen</h4>
+                                <p class="author-title">CFO, TechStart Solutions</p>
+                                <p class="author-result">40% faster reporting</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "The cost savings have been remarkable. Prixetic's outsourcing solution reduced our
+                            accounting costs by 35% while improving accuracy. Best decision we've made for our finance
+                            operations."
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span class="author-initial">M</span>
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Michael Rodriguez</h4>
+                                <p class="author-title">Founder, GreenLeaf Retail</p>
+                                <p class="author-result">35% cost reduction</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card desktop-only">
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "Their payroll management is flawless. Never missed a deadline, and their compliance
+                            expertise saved us from potential tax issues. Professional, reliable, and always
+                            responsive."
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span class="author-initial">A</span>
+                            </div>
+                            <div class="author-info">
+                                <h4 class="author-name">Amanda Foster</h4>
+                                <p class="author-title">Operations Director, BuildRight Construction</p>
+                                <p class="author-result">Zero compliance issues</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section class="solutions-section">
+            <div class="solutions-container">
+                <div class="solutions-header">
+                    <h2 class="solutions-title">Solutions for <span class="highlight">Every Business</span></h2>
+                    <p class="solutions-subtitle">Tailored accounting services to meet your specific industry needs</p>
+                </div>
+
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <h3 class="solution-title">For Startups</h3>
+                        <p class="solution-description">
+                            Scale your financial operations efficiently while maintaining compliance and investor-ready
+                            reporting
+                        </p>
+                        <div class="solution-features">
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Investor-ready financial reports</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Financial planning and analysis</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Cash flow management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-card">
+                        <h3 class="solution-title">For E-commerce</h3>
+                        <p class="solution-description">
+                            Handle complex multi-channel revenue tracking and inventory management with automated
+                            reconciliation
+                        </p>
+                        <div class="solution-features">
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Multi-platform sales tracking</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Inventory and cost management</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Tax compliance and reporting</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Transaction categorization</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Financial compliance standards</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-card">
+                        <h3 class="solution-title">For SaaS Companies</h3>
+                        <p class="solution-description">
+                            Navigate complex subscription revenue and recurring billing with professional accounting
+                            standards
+                        </p>
+                        <div class="solution-features">
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Subscription revenue management</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Monthly recurring revenue tracking</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Customer financial analytics</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Billing reconciliation</span>
+                            </div>
+                            <div class="solution-feature">
+                                <div class="solution-check">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                    </svg>
+                                </div>
+                                <span>Deferred income management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
