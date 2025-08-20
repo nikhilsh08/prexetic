@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Prixetic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 24px;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .leader-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .leader-initial {
+            color: white;
+            font-weight: 900;
+            font-size: 36px;
+        }
+
+        .leader-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+        }
+
+        .leader-badge svg {
+            width: 18px;
+            height: 18px;
+            fill: #333;
+        }
+
+        .leader-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .leader-role {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .leader-credentials {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .leader-bio {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .leader-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .highlight-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Team Stats Section */
+        .stats-section {
+            background: #fafafa;
+            padding: 80px 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .stat-card {
+            background: white;
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: 16px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .stat-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stat-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Culture Section */
+        .culture-section {
+            padding: 80px 24px;
+            background: white;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .culture-card {
+            background: #fafafa;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .culture-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .culture-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .culture-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .culture-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Client Success Section */
+        .success-section {
+            background: #fafafa;
+            padding: 80px 24px;
+        }
+
+        .success-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .success-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .success-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-quote {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 24px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .success-quote::before {
+            content: '"';
+            position: absolute;
+            left: -12px;
+            top: -8px;
+            font-size: 40px;
+            color: rgba(102, 126, 234, 0.3);
+            font-family: serif;
+        }
+
+        .success-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .success-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .success-initial {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .success-info {
+            flex: 1;
+        }
+
+        .success-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .success-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .success-result {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            padding: 18px 24px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Certification Badge */
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 4px 8px 0;
+        }
+
+        .certification-icon {
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certification-icon svg {
+            width: 8px;
+            height: 8px;
+            fill: white;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            background: white;
+            padding: 80px 24px;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .expertise-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .expertise-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .expertise-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .expertise-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .expertise-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .specialty-tag {
+            background: white;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Team Members Section */
+        .team-members-section {
+            background: #fafafa;
+            padding: 80px 24px;
+        }
+
+        .team-members-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .member-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .member-initial {
+            color: white;
+            font-weight: 800;
+            font-size: 24px;
+        }
+
+        .member-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .member-bio {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .member-certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 80px 48px;
+            }
+
+            .page-title {
+                font-size: 56px;
+            }
+
+            .page-subtitle {
+                font-size: 20px;
+            }
+
+            .content-section {
+                padding: 100px 48px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .section-intro {
+                font-size: 18px;
+            }
+
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .culture-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .team-members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .success-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .cta-section {
+                padding: 100px 48px;
+            }
+
+            .cta-title {
+                font-size: 42px;
+            }
+
+            .cta-description {
+                font-size: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                flex: 1;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .page-header {
+                padding: 120px 48px;
+            }
+
+            .page-title {
+                font-size: 72px;
+            }
+
+            .page-subtitle {
+                font-size: 22px;
+            }
+
+            .content-section {
+                padding: 120px 48px;
+            }
+
+            .section-title {
+                font-size: 56px;
+            }
+
+            .section-intro {
+                font-size: 20px;
+            }
+
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 32px;
+            }
+
+            .culture-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 32px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .team-members-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .success-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .cta-section {
+                padding: 120px 48px;
+            }
+
+            .cta-title {
+                font-size: 56px;
+            }
+
+            .cta-description {
+                font-size: 22px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .leader-card,
+        .stat-card,
+        .culture-card,
+        .expertise-card,
+        .member-card,
+        .success-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .leader-card:nth-child(1) { animation-delay: 0.1s; }
+        .leader-card:nth-child(2) { animation-delay: 0.2s; }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .culture-card:nth-child(1) { animation-delay: 0.1s; }
+        .culture-card:nth-child(2) { animation-delay: 0.2s; }
+        .culture-card:nth-child(3) { animation-delay: 0.3s; }
+        .culture-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .expertise-card:nth-child(1) { animation-delay: 0.1s; }
+        .expertise-card:nth-child(2) { animation-delay: 0.2s; }
+        .expertise-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .member-card:nth-child(1) { animation-delay: 0.1s; }
+        .member-card:nth-child(2) { animation-delay: 0.2s; }
+        .member-card:nth-child(3) { animation-delay: 0.3s; }
+        .member-card:nth-child(4) { animation-delay: 0.4s; }
+        .member-card:nth-child(5) { animation-delay: 0.5s; }
+        .member-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .success-card:nth-child(1) { animation-delay: 0.1s; }
+        .success-card:nth-child(2) { animation-delay: 0.2s; }
+        .success-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">Our <span class="highlight">Expert Team</span></h1>
+            <p class="page-subtitle">
+                Meet the certified professionals who bring decades of experience and proven expertise to transform your financial operations.
+            </p>
+        </section>
+
+        <!-- Leadership Team Section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2 class="section-title">Leadership <span class="highlight">Team</span></h2>
+                <p class="section-intro">
+                    Our leadership team combines strategic vision with hands-on expertise, bringing proven experience from scaling high-growth companies and managing complex financial operations.
+                </p>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-avatar">
+                            <span class="leader-initial">A</span>
+                            <div class="leader-badge">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="leader-name">Alex Chen</h3>
+                        <p class="leader-role">CEO & Founder</p>
+                        <p class="leader-credentials">MBA Finance, CPA</p>
+                        <p class="leader-bio">
+                            Alex founded Prixetic with a vision to democratize professional accounting services. With 12+ years of experience in financial operations and a proven track record of scaling companies through Series B funding, Alex leads our strategic direction and client relationships.
+                        </p>
+                        <div class="leader-highlights">
+                            <span class="highlight-tag">Series B Expert</span>
+                            <span class="highlight-tag">$47M+ Raised</span>
+                            <span class="highlight-tag">Startup Advisor</span>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-avatar">
+                            <span class="leader-initial">S</span>
+                            <div class="leader-badge">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="leader-name">Sarah Williams</h3>
+                        <p class="leader-role">Chief Operations Officer</p>
+                        <p class="leader-credentials">CPA, CMA</p>
+                        <p class="leader-bio">
+                            Sarah oversees all client operations and service delivery at Prixetic. With extensive experience in multi-entity accounting and international compliance, she ensures every client receives world-class service and accurate financial reporting.
+                        </p>
+                        <div class="leader-highlights">
+                            <span class="highlight-tag">Operations Expert</span>
+                            <span class="highlight-tag">Global Compliance</span>
+                            <span class="highlight-tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Expertise Section -->
+        <section class="expertise-section">
+            <div class="content-container">
+                <h2 class="section-title">Our <span class="highlight">Expertise</span></h2>
+                <p class="section-intro">
+                    Our team brings together decades of combined experience across diverse industries, backed by professional certifications and continuous learning commitments.
+                </p>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-number">150+</div>
+                        <h3 class="expertise-title">Years Combined Experience</h3>
+                        <p class="expertise-description">Collective expertise across accounting, finance, and business operations</p>
+                        <div class="expertise-specialties">
+                            <span class="specialty-tag">Financial Reporting</span>
+                            <span class="specialty-tag">Tax Compliance</span>
+                            <span class="specialty-tag">Audit Support</span>
+                        </div>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number">15</div>
+                        <h3 class="expertise-title">Certified Professionals</h3>
+                        <p class="expertise-description">CPAs, CMAs, and specialized certifications in various accounting disciplines</p>
+                        <div class="expertise-specialties">
+                            <span class="specialty-tag">CPA Certified</span>
+                            <span class="specialty-tag">CMA Qualified</span>
+                            <span class="specialty-tag">Industry Experts</span>
+                        </div>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number">25+</div>
+                        <h3 class="expertise-title">Industry Specializations</h3>
+                        <p class="expertise-description">Deep knowledge across SaaS, e-commerce, startups, and traditional businesses</p>
+                        <div class="expertise-specialties">
+                            <span class="specialty-tag">SaaS Revenue</span>
+                            <span class="specialty-tag">E-commerce</span>
+                            <span class="specialty-tag">Manufacturing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Members Section -->
+        <section class="team-members-section">
+            <div class="content-container">
+                <h2 class="section-title">Meet Our <span class="highlight">Accounting Professionals</span></h2>
+                <p class="section-intro">
+                    Our dedicated team of accounting professionals brings specialized expertise and personal attention to every client engagement.
+                </p>
+                <div class="team-members-grid">
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">R</span>
+                        </div>
+                        <h3 class="member-name">Rachel Thompson</h3>
+                        <p class="member-role">Senior Accounting Manager</p>
+                        <p class="member-bio">
+                            Specializes in SaaS revenue recognition and subscription billing complexities. Rachel has helped 50+ companies streamline their recurring revenue accounting processes.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                CPA
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                SaaS Expert
+                            </span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">M</span>
+                        </div>
+                        <h3 class="member-name">Marcus Johnson</h3>
+                        <p class="member-role">Payroll & Compliance Specialist</p>
+                        <p class="member-bio">
+                            Expert in multi-state payroll processing and employment tax compliance. Marcus ensures accurate payroll management and maintains perfect compliance records across all jurisdictions.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                CPP
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                Tax Specialist
+                            </span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">L</span>
+                        </div>
+                        <h3 class="member-name">Lisa Martinez</h3>
+                        <p class="member-role">Financial Analysis Lead</p>
+                        <p class="member-bio">
+                            Transforms complex financial data into actionable business insights. Lisa creates custom dashboards and KPI tracking systems that help clients make informed strategic decisions.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                CMA
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                Data Analytics
+                            </span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">J</span>
+                        </div>
+                        <h3 class="member-name">James Park</h3>
+                        <p class="member-role">Technology Integration Manager</p>
+                        <p class="member-bio">
+                            Specializes in accounting software implementation and automation solutions. James ensures seamless integration with existing systems and optimizes workflows for maximum efficiency.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                NetSuite Expert
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                AI Implementation
+                            </span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">E</span>
+                        </div>
+                        <h3 class="member-name">Emma Rodriguez</h3>
+                        <p class="member-role">Client Success Manager</p>
+                        <p class="member-bio">
+                            Dedicated to ensuring exceptional client experiences and successful outcomes. Emma manages client relationships and ensures all deliverables exceed expectations consistently.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                Project Management
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                Client Relations
+                            </span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span class="member-initial">K</span>
+                        </div>
+                        <h3 class="member-name">Kevin O'Brien</h3>
+                        <p class="member-role">International Compliance Lead</p>
+                        <p class="member-bio">
+                            Handles complex multi-entity consolidations and international tax compliance. Kevin's expertise ensures global businesses maintain compliance across all jurisdictions seamlessly.
+                        </p>
+                        <div class="member-certifications">
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                CPA
+                            </span>
+                            <span class="certification-badge">
+                                <div class="certification-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                International Tax
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Stats Section -->
+        <section class="stats-section">
+            <div class="content-container">
+                <h2 class="section-title">Team <span class="highlight">Excellence</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Certified Team</div>
+                        <div class="stat-description">All senior staff hold professional certifications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Years Experience</div>
+                        <div class="stat-description">Combined team expertise across all disciplines</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">40hrs</div>
+                        <div class="stat-label">Annual Training</div>
+                        <div class="stat-description">Per team member continuing education</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v-3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v7h3v4H4z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Clients Served</div>
+                        <div class="stat-description">Successful engagements across industries</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Culture Section -->
+        <section class="culture-section">
+            <div class="content-container">
+                <h2 class="section-title">Our Team <span class="highlight">Culture</span></h2>
+                <p class="section-intro">
+                    We've built a culture that prioritizes excellence, collaboration, and continuous growth. Our values guide everything we do and every client interaction.
+                </p>
+                <div class="culture-grid">
+                    <div class="culture-card">
+                        <div class="culture-icon">🤝</div>
+                        <h3 class="culture-title">Collaborative Approach</h3>
+                        <p class="culture-description">
+                            We work as an integrated team, both internally and with our clients. Every engagement benefits from our collective expertise and shared knowledge.
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <div class="culture-icon">📚</div>
+                        <h3 class="culture-title">Professional Development</h3>
+                        <p class="culture-description">
+                            Continuous learning is core to our culture. We invest in ongoing training, certifications, and industry knowledge to stay ahead of evolving standards.
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <div class="culture-icon">🎯</div>
+                        <h3 class="culture-title">Client-First Mentality</h3>
+                        <p class="culture-description">
+                            Every decision we make starts with asking: "How does this benefit our clients?" Your success drives our approach to service delivery and innovation.
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <div class="culture-icon">🚀</div>
+                        <h3 class="culture-title">Innovation Focus</h3>
+                        <p class="culture-description">
+                            We embrace new technologies and methodologies that improve service quality. Continuous improvement and innovation keep us at the forefront of the industry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Client Success Stories Section -->
+        <section class="success-section">
+            <div class="content-container">
+                <h2 class="section-title">Client <span class="highlight">Success Stories</span></h2>
+                <p class="section-intro">
+                    Our team's expertise translates into real results for our clients. Here's what they say about working with our professionals.
+                </p>
+                <div class="success-grid">
+                    <div class="success-card">
+                        <blockquote class="success-quote">
+                            The Prixetic team completely transformed our month-end process. Sarah's expertise in SaaS accounting helped us achieve investor-ready financials in record time.
+                        </blockquote>
+                        <div class="success-author">
+                            <div class="success-avatar">
+                                <span class="success-initial">D</span>
+                            </div>
+                            <div class="success-info">
+                                <h4 class="success-name">David Kim</h4>
+                                <p class="success-title">CEO, CloudTech Solutions</p>
+                                <p class="success-result">Reduced close time by 60%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <blockquote class="success-quote">
+                            Marcus and the payroll team have been flawless. Zero compliance issues across 12 states, and their proactive approach saved us from potential penalties.
+                        </blockquote>
+                        <div class="success-author">
+                            <div class="success-avatar">
+                                <span class="success-initial">T</span>
+                            </div>
+                            <div class="success-info">
+                                <h4 class="success-name">Taylor Johnson</h4>
+                                <p class="success-title">HR Director, BuildCorp</p>
+                                <p class="success-result">100% compliance rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <blockquote class="success-quote">
+                            Lisa's financial analysis and custom dashboards gave us insights we never had before. Our board meetings are now data-driven and strategic.
+                        </blockquote>
+                        <div class="success-author">
+                            <div class="success-avatar">
+                                <span class="success-initial">A</span>
+                            </div>
+                            <div class="success-info">
+                                <h4 class="success-name">Andrea Walsh</h4>
+                                <p class="success-title">CFO, GrowthVentures</p>
+                                <p class="success-result">Enhanced decision making</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Values Section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2 class="section-title">What Drives Our <span class="highlight">Excellence</span></h2>
+                <div class="section-intro" style="text-align: left; max-width: 100%;">
+                    <p style="margin-bottom: 24px;">
+                        Our commitment to excellence stems from a deep understanding that your financial operations are the foundation of your business success. Every member of our team shares core values that drive exceptional service delivery.
+                    </p>
+                    <p style="margin-bottom: 24px;">
+                        We believe in <strong style="color: #667eea;">meticulous attention to detail</strong> because small errors can have big consequences. Our proactive communication ensures you're always informed and confident in your financial position. We view ourselves as partners in your success, not just service providers.
+                    </p>
+                    <p style="margin-bottom: 24px;">
+                        Professional development isn't just encouraged at Prixetic – it's essential. Each team member commits to <strong style="color: #667eea;">40+ hours of annual continuing education</strong>, ensuring we stay current with evolving accounting standards, tax regulations, and industry best practices.
+                    </p>
+                    <p>
+                        Our collaborative culture means every client benefits from our collective expertise. When you work with one team member, you gain access to the knowledge and experience of our entire professional network.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="content-container">
+                <h2 class="cta-title">Ready to Work with Our <span style="color: rgba(255,255,255,0.9);">Expert Team?</span></h2>
+                <p class="cta-description">
+                    Experience the difference that dedicated professionals and proven expertise can make for your financial operations.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#consultation" class="btn-primary">Schedule Team Consultation</a>
+                    <a href="#contact" class="btn-secondary">Meet Your Team</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.leader-card, .stat-card, .culture-card, .expertise-card, .member-card, .success-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add click handlers for certification badges
+        document.querySelectorAll('.certification-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Prixetic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 40px 24px 20px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 12px 20px;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 25px;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Featured Article */
+        .featured-section {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .featured-article {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 20px;
+            padding: 40px 24px;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .featured-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .featured-excerpt {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Blog Grid */
+        .blog-section {
+            padding: 60px 24px;
+            background: #fafafa;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 48px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .blog-image svg {
+            width: 48px;
+            height: 48px;
+            fill: rgba(255, 255, 255, 0.8);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .blog-content {
+            padding: 24px;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .blog-read-time {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .blog-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-link:hover {
+            transform: translateX(4px);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .category-card {
+            background: #fafafa;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .category-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .category-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .category-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .category-count {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .newsletter-description {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-btn {
+            padding: 16px 20px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 80px 48px;
+            }
+
+            .page-title {
+                font-size: 56px;
+            }
+
+            .page-subtitle {
+                font-size: 20px;
+            }
+
+            .filter-section {
+                padding: 60px 48px 40px;
+            }
+
+            .featured-section {
+                padding: 80px 48px;
+            }
+
+            .featured-article {
+                padding: 60px 48px;
+            }
+
+            .featured-title {
+                font-size: 36px;
+            }
+
+            .featured-excerpt {
+                font-size: 18px;
+            }
+
+            .blog-section, .categories-section {
+                padding: 80px 48px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+
+            .newsletter-section {
+                padding: 80px 48px;
+            }
+
+            .newsletter-title {
+                font-size: 36px;
+            }
+
+            .newsletter-description {
+                font-size: 18px;
+            }
+
+            .newsletter-form {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            .newsletter-input {
+                flex: 1;
+            }
+
+            .newsletter-btn {
+                white-space: nowrap;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .page-header {
+                padding: 120px 48px;
+            }
+
+            .page-title {
+                font-size: 72px;
+            }
+
+            .page-subtitle {
+                font-size: 22px;
+            }
+
+            .filter-section {
+                padding: 80px 48px 60px;
+            }
+
+            .featured-section {
+                padding: 100px 48px;
+            }
+
+            .featured-title {
+                font-size: 48px;
+            }
+
+            .featured-excerpt {
+                font-size: 20px;
+            }
+
+            .blog-section, .categories-section {
+                padding: 100px 48px;
+            }
+
+            .section-title {
+                font-size: 56px;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .newsletter-section {
+                padding: 100px 48px;
+            }
+
+            .newsletter-title {
+                font-size: 48px;
+            }
+
+            .newsletter-description {
+                font-size: 20px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blog-card, .category-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-card:nth-child(1) { animation-delay: 0.1s; }
+        .blog-card:nth-child(2) { animation-delay: 0.2s; }
+        .blog-card:nth-child(3) { animation-delay: 0.3s; }
+        .blog-card:nth-child(4) { animation-delay: 0.4s; }
+        .blog-card:nth-child(5) { animation-delay: 0.5s; }
+        .blog-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .category-card:nth-child(1) { animation-delay: 0.1s; }
+        .category-card:nth-child(2) { animation-delay: 0.2s; }
+        .category-card:nth-child(3) { animation-delay: 0.3s; }
+        .category-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">Insights & <span class="highlight">Expert Advice</span></h1>
+            <p class="page-subtitle">
+                Stay informed with the latest trends in accounting, finance, and business growth. Expert insights to help you make better financial decisions.
+            </p>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <div class="filter-tabs">
+                    <a href="#" class="filter-tab active">All Articles</a>
+                    <a href="#" class="filter-tab">Best Practices</a>
+                    <a href="#" class="filter-tab">Tax & Compliance</a>
+                    <a href="#" class="filter-tab">Business Growth</a>
+                    <a href="#" class="filter-tab">Technology</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Article -->
+        <section class="featured-section">
+            <div class="featured-container">
+                <article class="featured-article">
+                    <div class="featured-badge">
+                        ⭐ Featured Article
+                    </div>
+                    <h2 class="featured-title">5 Essential Financial Metrics Every Growing Business Should Track</h2>
+                    <p class="featured-excerpt">
+                        Discover the key performance indicators that will help you make informed decisions, optimize cash flow, and drive sustainable growth for your business.
+                    </p>
+                    <div class="featured-meta">
+                        <div class="meta-item">
+                            📅 December 15, 2024
+                        </div>
+                        <div class="meta-item">
+                            ⏱️ 8 min read
+                        </div>
+                        <div class="meta-item">
+                            📈 Business Growth
+                        </div>
+                    </div>
+                    <a href="#" class="read-more-btn">
+                        Read Full Article
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Recent Articles -->
+        <section class="blog-section">
+            <div class="blog-container">
+                <h2 class="section-title">Latest <span class="highlight">Articles</span></h2>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Best Practices</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Streamlining Your Month-End Close Process</h3>
+                            <p class="blog-excerpt">Learn how to reduce your month-end close time from weeks to days with these proven strategies and automation techniques.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Dec 10, 2024</span>
+                                <span class="blog-read-time">⏱️ 6 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Tax & Compliance</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">2025 Tax Law Changes: What Businesses Need to Know</h3>
+                            <p class="blog-excerpt">Stay ahead of the curve with our comprehensive guide to the latest tax law changes affecting businesses in 2025.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Dec 8, 2024</span>
+                                <span class="blog-read-time">⏱️ 10 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Technology</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">AI in Accounting: Automation Tools That Save Time</h3>
+                            <p class="blog-excerpt">Explore the latest AI tools and automation technologies that are revolutionizing accounting workflows and improving accuracy.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Dec 5, 2024</span>
+                                <span class="blog-read-time">⏱️ 7 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Business Growth</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Cash Flow Forecasting for Small Business Success</h3>
+                            <p class="blog-excerpt">Master the art of cash flow forecasting to ensure your business has the working capital needed for growth and operations.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Dec 2, 2024</span>
+                                <span class="blog-read-time">⏱️ 9 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Best Practices</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Internal Controls: Protecting Your Business from Fraud</h3>
+                            <p class="blog-excerpt">Implement robust internal controls to safeguard your business assets and prevent financial fraud with these proven strategies.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Nov 28, 2024</span>
+                                <span class="blog-read-time">⏱️ 8 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="blog-category">Technology</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                            </svg>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Cybersecurity Best Practices for Financial Data</h3>
+                            <p class="blog-excerpt">Protect your sensitive financial information with these essential cybersecurity measures and data protection strategies.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">📅 Nov 25, 2024</span>
+                                <span class="blog-read-time">⏱️ 6 min read</span>
+                            </div>
+                            <a href="#" class="blog-link">
+                                Read More
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="categories-container">
+                <h2 class="section-title">Browse by <span class="highlight">Category</span></h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Accounting Best Practices</h3>
+                        <p class="category-description">Tips and strategies for optimizing your accounting processes and improving financial accuracy.</p>
+                        <div class="category-count">12 Articles</div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Tax & Compliance</h3>
+                        <p class="category-description">Stay current with tax law changes, compliance requirements, and regulatory updates.</p>
+                        <div class="category-count">8 Articles</div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Business Growth</h3>
+                        <p class="category-description">Financial strategies and insights to help scale your business effectively and sustainably.</p>
+                        <div class="category-count">15 Articles</div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Technology & Innovation</h3>
+                        <p class="category-description">Explore the latest accounting software, AI tools, and digital transformation trends.</p>
+                        <div class="category-count">10 Articles</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">Stay Informed</h2>
+                <p class="newsletter-description">
+                    Get the latest accounting insights, tax updates, and business growth strategies delivered directly to your inbox.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Filter tabs functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Here you would implement the filtering logic
+                console.log('Filter by:', this.textContent);
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            
+            // Here you would implement the newsletter subscription logic
+            alert('Thank you for subscribing! We\'ll keep you updated with the latest insights.');
+            this.reset();
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.blog-card, .category-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading state for dynamic content
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+
+</html>

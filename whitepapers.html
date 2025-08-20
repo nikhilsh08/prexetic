@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepapers - Prixetic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 40px 24px 20px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 12px 20px;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 25px;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Featured Whitepaper */
+        .featured-section {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .featured-whitepaper {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 20px;
+            padding: 40px 24px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .featured-category {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .featured-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .featured-excerpt {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .featured-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Whitepapers Grid */
+        .whitepapers-section {
+            padding: 60px 24px;
+            background: #fafafa;
+        }
+
+        .whitepapers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 48px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .whitepapers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .whitepaper-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .whitepaper-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .whitepaper-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .whitepaper-image svg {
+            width: 64px;
+            height: 64px;
+            fill: rgba(255, 255, 255, 0.8);
+        }
+
+        .whitepaper-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .whitepaper-pages {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .whitepaper-content {
+            padding: 24px;
+        }
+
+        .whitepaper-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .whitepaper-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .whitepaper-highlights {
+            margin-bottom: 20px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .highlight-bullet {
+            width: 4px;
+            height: 4px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .whitepaper-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .whitepaper-date {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .whitepaper-size {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .whitepaper-download {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .whitepaper-download:hover {
+            transform: translateX(4px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 32px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .stat-description {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .newsletter-description {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-btn {
+            padding: 16px 20px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 80px 48px;
+            }
+
+            .page-title {
+                font-size: 56px;
+            }
+
+            .page-subtitle {
+                font-size: 20px;
+            }
+
+            .filter-section {
+                padding: 60px 48px 40px;
+            }
+
+            .featured-section {
+                padding: 80px 48px;
+            }
+
+            .featured-whitepaper {
+                padding: 60px 48px;
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .featured-title {
+                font-size: 36px;
+            }
+
+            .featured-excerpt {
+                font-size: 18px;
+            }
+
+            .featured-meta {
+                flex-direction: row;
+                gap: 24px;
+            }
+
+            .whitepapers-section, .stats-section {
+                padding: 80px 48px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .whitepapers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .newsletter-section {
+                padding: 80px 48px;
+            }
+
+            .newsletter-title {
+                font-size: 36px;
+            }
+
+            .newsletter-description {
+                font-size: 18px;
+            }
+
+            .newsletter-form {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            .newsletter-input {
+                flex: 1;
+            }
+
+            .newsletter-btn {
+                white-space: nowrap;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .page-header {
+                padding: 120px 48px;
+            }
+
+            .page-title {
+                font-size: 72px;
+            }
+
+            .page-subtitle {
+                font-size: 22px;
+            }
+
+            .filter-section {
+                padding: 80px 48px 60px;
+            }
+
+            .featured-section {
+                padding: 100px 48px;
+            }
+
+            .featured-title {
+                font-size: 48px;
+            }
+
+            .featured-excerpt {
+                font-size: 20px;
+            }
+
+            .whitepapers-section, .stats-section {
+                padding: 100px 48px;
+            }
+
+            .section-title {
+                font-size: 56px;
+            }
+
+            .whitepapers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .newsletter-section {
+                padding: 100px 48px;
+            }
+
+            .newsletter-title {
+                font-size: 48px;
+            }
+
+            .newsletter-description {
+                font-size: 20px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .whitepaper-card, .stat-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .whitepaper-card:nth-child(1) { animation-delay: 0.1s; }
+        .whitepaper-card:nth-child(2) { animation-delay: 0.2s; }
+        .whitepaper-card:nth-child(3) { animation-delay: 0.3s; }
+        .whitepaper-card:nth-child(4) { animation-delay: 0.4s; }
+        .whitepaper-card:nth-child(5) { animation-delay: 0.5s; }
+        .whitepaper-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">Industry <span class="highlight">Whitepapers</span></h1>
+            <p class="page-subtitle">
+                In-depth research and analysis on accounting trends, compliance requirements, and strategic financial planning. Download comprehensive guides to enhance your financial operations.
+            </p>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <div class="filter-tabs">
+                    <a href="#" class="filter-tab active">All Research</a>
+                    <a href="#" class="filter-tab">Cost-Benefit Studies</a>
+                    <a href="#" class="filter-tab">Compliance Guides</a>
+                    <a href="#" class="filter-tab">Strategic Planning</a>
+                    <a href="#" class="filter-tab">Industry Trends</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Whitepaper -->
+        <section class="featured-section">
+            <div class="featured-container">
+                <div class="featured-whitepaper">
+                    <div class="featured-content">
+                        <div class="featured-badge">
+                            📊 Featured Research
+                        </div>
+                        <div class="featured-category">Cost-Benefit Analysis</div>
+                        <h2 class="featured-title">The True Cost of In-House Accounting: A Comprehensive Analysis</h2>
+                        <p class="featured-excerpt">
+                            Discover the hidden costs of maintaining an internal accounting department versus outsourcing to professional services. This comprehensive 24-page analysis includes real-world case studies, ROI calculations, and implementation strategies that have helped businesses reduce operational costs by up to 40% while improving accuracy and compliance.
+                        </p>
+                        <div class="featured-meta">
+                            <div class="meta-row">
+                                <div class="meta-item">
+                                    📅 Published: December 2024
+                                </div>
+                                <div class="meta-item">
+                                    📄 24 Pages
+                                </div>
+                                <div class="meta-item">
+                                    💼 Business Focus
+                                </div>
+                            </div>
+                            <div class="meta-row">
+                                <div class="meta-item">
+                                    📈 ROI Analysis Included
+                                </div>
+                                <div class="meta-item">
+                                    🔍 Case Studies
+                                </div>
+                                <div class="meta-item">
+                                    ⚡ Implementation Guide
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn">
+                            Download Free PDF
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Research Papers</div>
+                        <div class="stat-description">Comprehensive industry analysis</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Downloads</div>
+                        <div class="stat-description">Trusted by finance professionals</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Implementation Success</div>
+                        <div class="stat-description">Proven strategies that work</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Average Cost Savings</div>
+                        <div class="stat-description">Documented ROI improvement</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Whitepapers Grid -->
+        <section class="whitepapers-section">
+            <div class="whitepapers-container">
+                <h2 class="section-title">Latest <span class="highlight">Research</span></h2>
+                <div class="whitepapers-grid">
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Compliance Guide</div>
+                            <div class="whitepaper-pages">18 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">Compliance in the Digital Age: Staying Current with Evolving Regulations</h3>
+                            <p class="whitepaper-excerpt">Navigate the complex landscape of modern financial regulations with our comprehensive compliance guide designed for growing businesses.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Complete overview of current regulatory landscape</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Impact of technology on compliance requirements</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Best practices for maintaining compliance</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Risk mitigation strategies and frameworks</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Nov 2024</span>
+                                <span class="whitepaper-size">📊 2.1 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Strategic Planning</div>
+                            <div class="whitepaper-pages">22 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">Scaling Your Business: Financial Operations That Grow With You</h3>
+                            <p class="whitepaper-excerpt">Build a financial infrastructure that scales seamlessly with your business growth, from startup to enterprise level operations.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Financial infrastructure for growing companies</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Scalable accounting and payroll solutions</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Technology adoption strategies</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Change management and implementation</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Oct 2024</span>
+                                <span class="whitepaper-size">📊 2.8 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Industry Trends</div>
+                            <div class="whitepaper-pages">28 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">The Future of Accounting: Trends and Technologies Shaping the Industry</h3>
+                            <p class="whitepaper-excerpt">Explore emerging technologies and evolving client expectations that are transforming the accounting profession.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Emerging technologies in accounting</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Changing client expectations and demands</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Skills and capabilities needed for the future</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Preparing for industry evolution</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Sep 2024</span>
+                                <span class="whitepaper-size">📊 3.2 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Cost-Benefit Study</div>
+                            <div class="whitepaper-pages">16 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">ROI Analysis: Outsourcing vs. In-House Accounting Teams</h3>
+                            <p class="whitepaper-excerpt">Detailed financial analysis comparing the total cost of ownership for internal accounting departments versus professional outsourcing services.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Complete cost breakdown analysis</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>ROI calculations with real-world data</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Risk assessment frameworks</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Decision-making criteria and tools</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Aug 2024</span>
+                                <span class="whitepaper-size">📊 1.9 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Strategic Planning</div>
+                            <div class="whitepaper-pages">20 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">Financial Planning Excellence: Building Investor-Ready Reports</h3>
+                            <p class="whitepaper-excerpt">Master the art of financial planning and create investor-ready reports that drive funding success and strategic decision-making.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Investor-focused financial reporting</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Key metrics and KPIs for growth</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Forecasting and budgeting best practices</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Strategic planning frameworks</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Jul 2024</span>
+                                <span class="whitepaper-size">📊 2.4 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="whitepaper-card">
+                        <div class="whitepaper-image">
+                            <div class="whitepaper-category">Industry Trends</div>
+                            <div class="whitepaper-pages">14 pages</div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zM4 19h16v2H4z"/>
+                            </svg>
+                        </div>
+                        <div class="whitepaper-content">
+                            <h3 class="whitepaper-title">Automation in Accounting: A Practical Implementation Guide</h3>
+                            <p class="whitepaper-excerpt">Comprehensive guide to implementing accounting automation that reduces manual work by 70% while improving accuracy and compliance.</p>
+                            <div class="whitepaper-highlights">
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Step-by-step automation roadmap</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Tool selection and evaluation criteria</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Change management strategies</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <div class="highlight-bullet"></div>
+                                    <span>Success metrics and monitoring</span>
+                                </div>
+                            </div>
+                            <div class="whitepaper-meta">
+                                <span class="whitepaper-date">📅 Jun 2024</span>
+                                <span class="whitepaper-size">📊 1.7 MB</span>
+                            </div>
+                            <a href="#" class="whitepaper-download">
+                                Download PDF
+                                <svg viewBox="0 0 24 24" width="14" height="14">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-description">
+                    Get notified when new whitepapers are published. Join over 10,000 finance professionals who rely on our research.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Filter tabs functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Here you would implement the filtering logic
+                console.log('Filter by:', this.textContent);
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            
+            // Here you would implement the newsletter subscription logic
+            alert('Thank you for subscribing! We\'ll notify you about new whitepapers.');
+            this.reset();
+        });
+
+        // Download button clicks
+        document.querySelectorAll('.download-btn, .whitepaper-download').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Here you would implement the download logic
+                alert('Download started! The whitepaper will be saved to your downloads folder.');
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.whitepaper-card, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading state for dynamic content
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+
+</html>

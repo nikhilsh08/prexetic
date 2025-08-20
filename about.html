@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Prixetic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 24px;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .section-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-content p {
+            margin-bottom: 24px;
+        }
+
+        .section-content strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: #fafafa;
+            padding: 80px 24px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .value-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .value-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .value-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 24px;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stat-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 24px;
+            background: #fafafa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .team-initial {
+            color: white;
+            font-weight: 800;
+            font-size: 28px;
+        }
+
+        .team-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .team-bio {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            padding: 18px 24px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 80px 48px;
+            }
+
+            .page-title {
+                font-size: 56px;
+            }
+
+            .page-subtitle {
+                font-size: 20px;
+            }
+
+            .content-section {
+                padding: 100px 48px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .section-content {
+                font-size: 18px;
+            }
+
+            .values-section,
+            .stats-section,
+            .team-section {
+                padding: 100px 48px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .cta-section {
+                padding: 100px 48px;
+            }
+
+            .cta-title {
+                font-size: 42px;
+            }
+
+            .cta-description {
+                font-size: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                flex: 1;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .page-header {
+                padding: 120px 48px;
+            }
+
+            .page-title {
+                font-size: 72px;
+            }
+
+            .page-subtitle {
+                font-size: 22px;
+            }
+
+            .content-section {
+                padding: 120px 48px;
+            }
+
+            .section-title {
+                font-size: 56px;
+            }
+
+            .section-content {
+                font-size: 20px;
+            }
+
+            .values-section,
+            .stats-section,
+            .team-section {
+                padding: 120px 48px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .cta-section {
+                padding: 120px 48px;
+            }
+
+            .cta-title {
+                font-size: 56px;
+            }
+
+            .cta-description {
+                font-size: 22px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .value-card,
+        .stat-card,
+        .team-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.1s; }
+        .value-card:nth-child(2) { animation-delay: 0.2s; }
+        .value-card:nth-child(3) { animation-delay: 0.3s; }
+        .value-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .team-card:nth-child(1) { animation-delay: 0.1s; }
+        .team-card:nth-child(2) { animation-delay: 0.2s; }
+        .team-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">About <span class="highlight">Prixetic</span></h1>
+            <p class="page-subtitle">
+                Dedicated to transforming how businesses manage their financial operations through expert human support and cutting-edge technology.
+            </p>
+        </section>
+
+        <!-- Who We Are Section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2 class="section-title">Who <span class="highlight">We Are</span></h2>
+                <div class="section-content">
+                    <p>
+                        Prixetic is a professional accounting firm specializing in outsourced financial services for businesses of all sizes. With years of combined experience in the industry, we've built our reputation on delivering exceptional results through the perfect blend of human expertise and modern technology.
+                    </p>
+                    <p>
+                        Our team of <strong>certified accounting professionals</strong> brings deep industry knowledge and proven experience from scaling high-growth companies. We understand the unique challenges that businesses face in managing their financial operations, and we're committed to providing solutions that are both effective and efficient.
+                    </p>
+                    <p>
+                        What sets us apart is our commitment to maintaining the personal touch of human expertise while leveraging modern tools and automation to deliver superior results. We don't just process numbers – we provide strategic insights that help drive your business forward.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="content-section" style="background: #fafafa;">
+            <div class="content-container">
+                <h2 class="section-title">Our <span class="highlight">Mission</span></h2>
+                <div class="section-content">
+                    <p>
+                        Our mission is to <strong>simplify financial operations</strong> for businesses of all sizes, enabling entrepreneurs and business leaders to focus on what they do best – growing their companies.
+                    </p>
+                    <p>
+                        We believe that every business deserves access to professional-grade accounting services, regardless of their size or stage of growth. By reducing operational costs while improving accuracy and compliance, we help our clients achieve financial clarity and confidence.
+                    </p>
+                    <p>
+                        Through our comprehensive approach to accounting outsourcing, we enable business owners to <strong>redirect their energy</strong> from managing complex financial processes to driving innovation, building relationships, and pursuing new opportunities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="content-container">
+                <h2 class="section-title">Our Core <span class="highlight">Values</span></h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zM4 19h16v2H4z"/>
+                                <path d="M20 4H4v2h16V4z"/>
+                                <path d="M12 7L8 11h8l-4-4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Reliability</h3>
+                        <p class="value-description">
+                            Consistent, dependable service you can count on. We meet deadlines, maintain accuracy, and provide the stable foundation your business needs.
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Transparency</h3>
+                        <p class="value-description">
+                            Clear communication and complete visibility into our processes. No hidden fees, no surprises – just honest, straightforward service.
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Expertise</h3>
+                        <p class="value-description">
+                            Deep accounting knowledge combined with industry-specific experience. Our certified professionals bring proven expertise to every engagement.
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v-3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v7h3v4H4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Client-Centric</h3>
+                        <p class="value-description">
+                            Your success is our priority. We tailor our services to your specific needs and work as an extension of your team, not just a vendor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="content-container">
+                <h2 class="section-title">Our <span class="highlight">Impact</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">$47M+</div>
+                        <div class="stat-label">Fundraising Experience</div>
+                        <div class="stat-description">Guided through Series B scaling</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">35%</div>
+                        <div class="stat-label">Average Cost Reduction</div>
+                        <div class="stat-description">Operational savings for clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Faster Reporting</div>
+                        <div class="stat-description">Accelerated month-end close</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Compliance Rate</div>
+                        <div class="stat-description">Zero compliance issues</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="content-container">
+                <h2 class="section-title">Meet Our <span class="highlight">Expert Team</span></h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <span class="team-initial">R</span>
+                        </div>
+                        <h3 class="team-name">Rachel Thompson</h3>
+                        <p class="team-role">Chief Financial Officer</p>
+                        <p class="team-bio">
+                            15+ years of experience in financial operations and Series B fundraising. Rachel led the financial strategy that resulted in $47M+ in successful funding rounds.
+                        </p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <span class="team-initial">D</span>
+                        </div>
+                        <h3 class="team-name">David Kim</h3>
+                        <p class="team-role">Senior Accounting Manager</p>
+                        <p class="team-bio">
+                            CPA with expertise in multi-entity consolidation and international compliance. Specializes in SaaS revenue recognition and complex financial reporting.
+                        </p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <span class="team-initial">L</span>
+                        </div>
+                        <h3 class="team-name">Lisa Martinez</h3>
+                        <p class="team-role">Automation Specialist</p>
+                        <p class="team-bio">
+                            Expert in AI implementation and process automation. Lisa designs bespoke solutions that streamline workflows and reduce manual processing time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Prixetic Section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2 class="section-title">Why Choose <span class="highlight">Prixetic</span></h2>
+                <div class="section-content">
+                    <p>
+                        We've built Prixetic on the principle that <strong>professional accounting services</strong> should be accessible, reliable, and results-driven. Our proven track record speaks for itself – we consistently deliver cost reductions while improving accuracy and compliance.
+                    </p>
+                    <p>
+                        Our expert team combines diverse industry experience with cutting-edge technology to provide solutions that scale with your business. Whether you're a startup seeking investor-ready reports or an established company looking to optimize operations, we have the expertise to help you succeed.
+                    </p>
+                    <p>
+                        What truly sets us apart is our commitment to being more than just a service provider. We become an integral part of your financial operations, working closely with your team to ensure seamless integration and continuous improvement. <strong>Your growth is our success.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="content-container">
+                <h2 class="cta-title">Ready to Transform Your <span style="color: rgba(255,255,255,0.9);">Financial Operations?</span></h2>
+                <p class="cta-description">
+                    Join the leading businesses and startups that trust Prixetic to handle their accounting while they focus on growth.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#consultation" class="btn-primary">Start Free Consultation</a>
+                    <a href="#contact" class="btn-secondary">Contact Our Team</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.value-card, .stat-card, .team-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
