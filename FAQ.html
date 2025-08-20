@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Prixetic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .menu-line {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Search */
+        .faq-search-section {
+            padding: 40px 24px;
+            background: white;
+        }
+
+        .faq-search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid #f0f0f0;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            fill: #666;
+        }
+
+        /* FAQ Categories */
+        .faq-categories-section {
+            padding: 40px 24px 60px;
+            background: #fafafa;
+        }
+
+        .faq-categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .category-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        /* FAQ Accordion */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            border-color: #667eea;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: #fafafa;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            color: #667eea;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        }
+
+        .question-text {
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-toggle svg {
+            width: 12px;
+            height: 12px;
+            fill: white;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding: 24px;
+            background: white;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 16px;
+        }
+
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .faq-answer-content ul {
+            margin: 16px 0;
+            padding-left: 20px;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Contact CTA Section */
+        .contact-cta-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
+        }
+
+        .contact-cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .cta-description {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            padding: 18px 24px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 80px 48px;
+            }
+
+            .page-title {
+                font-size: 56px;
+            }
+
+            .page-subtitle {
+                font-size: 20px;
+            }
+
+            .faq-search-section {
+                padding: 60px 48px;
+            }
+
+            .faq-categories-section {
+                padding: 60px 48px 80px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .category-section {
+                padding: 40px 32px;
+            }
+
+            .contact-cta-section {
+                padding: 80px 48px;
+            }
+
+            .cta-title {
+                font-size: 36px;
+            }
+
+            .cta-description {
+                font-size: 18px;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            .btn-primary, .btn-secondary {
+                flex: 1;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 48px;
+                background: white;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .nav-link {
+                color: #666;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-link:hover {
+                color: #667eea;
+            }
+
+            .nav-cta {
+                padding: 12px 24px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+
+            .page-header {
+                padding: 120px 48px;
+            }
+
+            .page-title {
+                font-size: 72px;
+            }
+
+            .page-subtitle {
+                font-size: 22px;
+            }
+
+            .faq-search-section {
+                padding: 80px 48px;
+            }
+
+            .faq-categories-section {
+                padding: 80px 48px 100px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+
+            .category-section {
+                padding: 48px 40px;
+            }
+
+            .contact-cta-section {
+                padding: 100px 48px;
+            }
+
+            .cta-title {
+                font-size: 48px;
+            }
+
+            .cta-description {
+                font-size: 20px;
+            }
+        }
+
+        /* Animations */
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-section {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .category-section:nth-child(1) { animation-delay: 0.1s; }
+        .category-section:nth-child(2) { animation-delay: 0.2s; }
+        .category-section:nth-child(3) { animation-delay: 0.3s; }
+        .category-section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Search Highlight */
+        .highlight-text {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* Hidden class for search functionality */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <div class="logo-icon">P</div>
+                <span>Prixetic</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#trust" class="nav-link">Security</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#consultation" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <a href="index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="page-title">Frequently Asked <span class="highlight">Questions</span></h1>
+            <p class="page-subtitle">
+                Find answers to common questions about our accounting services, processes, and how we can help your business streamline financial operations.
+            </p>
+        </section>
+
+        <!-- FAQ Search -->
+        <section class="faq-search-section">
+            <div class="faq-search-container">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <input type="text" class="search-input" id="faqSearch" placeholder="Search for answers...">
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Categories -->
+        <section class="faq-categories-section">
+            <div class="faq-categories-container">
+                <div class="categories-grid">
+                    
+                    <!-- Getting Started Category -->
+                    <div class="category-section" data-category="getting-started">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h2 class="category-title">Getting Started</h2>
+                        </div>
+                        
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How long does implementation take?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our typical implementation timeline is <strong>2-4 weeks</strong> depending on the complexity of your business and current accounting setup.</p>
+                                        <p><strong>Week 1:</strong> Initial consultation, data gathering, and system setup</p>
+                                        <p><strong>Week 2-3:</strong> Data migration, process configuration, and testing</p>
+                                        <p><strong>Week 4:</strong> Final review, training, and go-live</p>
+                                        <p>For urgent situations, we offer expedited onboarding that can be completed in as little as 1-2 weeks.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What information do you need to get started?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>To begin our partnership, we'll need access to the following:</p>
+                                        <ul>
+                                            <li><strong>Financial Records:</strong> Recent financial statements, trial balance, and chart of accounts</li>
+                                            <li><strong>Bank Information:</strong> Recent bank statements and account details</li>
+                                            <li><strong>Current Software:</strong> Access to your existing accounting software (QuickBooks, NetSuite, Xero, etc.)</li>
+                                            <li><strong>Tax Documents:</strong> Previous tax returns and any pending tax obligations</li>
+                                            <li><strong>Business Documents:</strong> Articles of incorporation, operating agreements, and licenses</li>
+                                            <li><strong>Payroll Data:</strong> Employee information, pay rates, and benefit details (if applicable)</li>
+                                        </ul>
+                                        <p>Our team will provide a detailed checklist during your initial consultation to ensure nothing is missed.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What's included in the initial consultation?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our <strong>free 30-minute initial consultation</strong> includes:</p>
+                                        <ul>
+                                            <li><strong>Current State Assessment:</strong> Review of your existing accounting processes and pain points</li>
+                                            <li><strong>Needs Analysis:</strong> Understanding your specific requirements and goals</li>
+                                            <li><strong>Service Recommendation:</strong> Customized service package based on your business needs</li>
+                                            <li><strong>Cost Estimate:</strong> Transparent pricing proposal with no hidden fees</li>
+                                            <li><strong>Timeline Discussion:</strong> Implementation schedule and key milestones</li>
+                                            <li><strong>Q&A Session:</strong> Address any questions or concerns you may have</li>
+                                        </ul>
+                                        <p>There's absolutely no obligation, and you'll receive a detailed proposal within 24 hours of our consultation.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How do you ensure data security and confidentiality?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Data security is our top priority. We implement multiple layers of protection:</p>
+                                        <ul>
+                                            <li><strong>Encryption:</strong> All data is encrypted both in transit and at rest using bank-grade 256-bit SSL encryption</li>
+                                            <li><strong>Secure Access:</strong> Multi-factor authentication and role-based access controls</li>
+                                            <li><strong>Compliance:</strong> SOC 2 Type II certified infrastructure and GDPR compliance</li>
+                                            <li><strong>Confidentiality Agreements:</strong> All team members sign strict NDAs and confidentiality agreements</li>
+                                            <li><strong>Regular Audits:</strong> Quarterly security assessments and vulnerability testing</li>
+                                            <li><strong>Backup Systems:</strong> Automated daily backups with secure off-site storage</li>
+                                        </ul>
+                                        <p>We also provide detailed security documentation and can accommodate any additional security requirements your business may have.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services and Pricing Category -->
+                    <div class="category-section" data-category="services-pricing">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                                </svg>
+                            </div>
+                            <h2 class="category-title">Services and Pricing</h2>
+                        </div>
+                        
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What's included in your bookkeeping service?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our comprehensive bookkeeping service includes:</p>
+                                        <ul>
+                                            <li><strong>Daily Transaction Recording:</strong> All income, expenses, and transfers</li>
+                                            <li><strong>Bank Reconciliation:</strong> Monthly reconciliation of all accounts</li>
+                                            <li><strong>Accounts Receivable:</strong> Invoice creation, tracking, and collections</li>
+                                            <li><strong>Accounts Payable:</strong> Bill management and vendor payments</li>
+                                            <li><strong>Financial Reporting:</strong> Monthly P&L, balance sheet, and cash flow statements</li>
+                                            <li><strong>Expense Categorization:</strong> Proper classification for tax optimization</li>
+                                            <li><strong>Tax Preparation Support:</strong> Organized records for tax filing</li>
+                                            <li><strong>Custom Reports:</strong> Tailored reports based on your business needs</li>
+                                        </ul>
+                                        <p>All work is performed by certified accounting professionals with direct access to your dedicated account manager.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How do you determine pricing for services?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our pricing is based on several key factors to ensure fair and transparent costs:</p>
+                                        <ul>
+                                            <li><strong>Transaction Volume:</strong> Number of monthly transactions and complexity</li>
+                                            <li><strong>Service Scope:</strong> Which services you need (bookkeeping, payroll, reporting, etc.)</li>
+                                            <li><strong>Business Size:</strong> Revenue, number of employees, and locations</li>
+                                            <li><strong>Industry Complexity:</strong> Specific requirements for your industry</li>
+                                            <li><strong>Current State:</strong> Amount of cleanup or catch-up work needed</li>
+                                            <li><strong>Reporting Frequency:</strong> Weekly, monthly, or quarterly reporting needs</li>
+                                        </ul>
+                                        <p>We provide <strong>fixed monthly pricing</strong> with no surprises. Most clients save 30-50% compared to hiring in-house staff while receiving higher-quality service.</p>
+                                        <p>During your consultation, we'll provide a detailed, customized quote based on your specific needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">Can services be customized for specific industries?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p><strong>Absolutely!</strong> We specialize in industry-specific accounting solutions with deep expertise in:</p>
+                                        <ul>
+                                            <li><strong>SaaS & Technology:</strong> Subscription revenue, deferred income, and investor reporting</li>
+                                            <li><strong>E-commerce:</strong> Multi-channel sales tracking, inventory management, and platform reconciliation</li>
+                                            <li><strong>Professional Services:</strong> Project-based billing, time tracking, and client profitability analysis</li>
+                                            <li><strong>Healthcare:</strong> Insurance billing, compliance reporting, and specialized accounting standards</li>
+                                            <li><strong>Real Estate:</strong> Property management, rental income tracking, and depreciation schedules</li>
+                                            <li><strong>Construction:</strong> Job costing, progress billing, and equipment depreciation</li>
+                                            <li><strong>Retail:</strong> Inventory management, point-of-sale integration, and seasonal reporting</li>
+                                            <li><strong>Non-Profit:</strong> Grant tracking, donor management, and compliance reporting</li>
+                                        </ul>
+                                        <p>Our team includes specialists with industry certifications who understand the unique requirements, regulations, and best practices for your specific business type.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What happens if our business grows or changes?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our services are designed to <strong>scale with your business</strong>. As you grow, we adapt:</p>
+                                        <ul>
+                                            <li><strong>Flexible Service Plans:</strong> Easily add or modify services as needed</li>
+                                            <li><strong>Volume Scaling:</strong> Handle increased transaction volumes seamlessly</li>
+                                            <li><strong>Advanced Reporting:</strong> Implement sophisticated analytics and KPI tracking</li>
+                                            <li><strong>Multi-Entity Support:</strong> Manage subsidiaries, divisions, or new locations</li>
+                                            <li><strong>Team Expansion:</strong> Assign additional specialists as complexity increases</li>
+                                            <li><strong>System Upgrades:</strong> Migrate to more robust accounting platforms when needed</li>
+                                            <li><strong>Compliance Support:</strong> Navigate new regulations and requirements</li>
+                                        </ul>
+                                        <p>We conduct <strong>quarterly business reviews</strong> to assess your evolving needs and recommend optimizations. Our goal is to be your long-term financial partner, supporting your journey from startup to enterprise.</p>
+                                        <p>Pricing adjustments are always discussed in advance with transparent communication about any changes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology and Process Category -->
+                    <div class="category-section" data-category="technology-process">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                                </svg>
+                            </div>
+                            <h2 class="category-title">Technology and Process</h2>
+                        </div>
+                        
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What accounting software do you work with?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>We're platform-agnostic and work with <strong>all major accounting software</strong>:</p>
+                                        <ul>
+                                            <li><strong>QuickBooks:</strong> Online, Desktop, and Enterprise versions</li>
+                                            <li><strong>NetSuite:</strong> Full ERP implementation and optimization</li>
+                                            <li><strong>Xero:</strong> Cloud-based accounting with app integrations</li>
+                                            <li><strong>Sage:</strong> 50cloud, 100, and Intacct versions</li>
+                                            <li><strong>FreshBooks:</strong> Service-based business specialization</li>
+                                            <li><strong>Wave:</strong> Small business accounting solution</li>
+                                            <li><strong>Zoho Books:</strong> Integrated business suite</li>
+                                            <li><strong>Custom Systems:</strong> Industry-specific or proprietary software</li>
+                                        </ul>
+                                        <p><strong>No forced migrations!</strong> We work within your existing system unless you specifically want to upgrade. If you don't have accounting software, we'll recommend the best solution for your business size and industry.</p>
+                                        <p>Our team includes certified experts in each platform, ensuring you get the most out of your chosen software.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How do you ensure accuracy in financial reporting?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>We maintain <strong>99.9% accuracy</strong> through our multi-layer quality control process:</p>
+                                        <ul>
+                                            <li><strong>Certified Professionals:</strong> All work performed by CPAs, enrolled agents, and certified bookkeepers</li>
+                                            <li><strong>Dual Review System:</strong> Every transaction reviewed by two separate team members</li>
+                                            <li><strong>Automated Reconciliation:</strong> Daily automated checks and variance analysis</li>
+                                            <li><strong>Monthly Quality Audits:</strong> Senior accountant reviews all work before delivery</li>
+                                            <li><strong>Real-time Monitoring:</strong> Continuous oversight using advanced accounting analytics</li>
+                                            <li><strong>Client Confirmation:</strong> Regular review calls to confirm unusual transactions</li>
+                                            <li><strong>Error Tracking:</strong> Any discrepancies are documented and process improvements implemented</li>
+                                        </ul>
+                                        <p>We also provide <strong>monthly variance reports</strong> highlighting any significant changes from previous periods, ensuring nothing is overlooked.</p>
+                                        <p>If an error is ever discovered, we take full responsibility and implement immediate corrections at no charge.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How often will we receive financial reports?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Reporting frequency is <strong>customized to your business needs</strong>:</p>
+                                        <ul>
+                                            <li><strong>Monthly Reports:</strong> Most common - delivered by the 10th of the following month</li>
+                                            <li><strong>Quarterly Reports:</strong> Comprehensive analysis with trend insights</li>
+                                            <li><strong>Weekly Reports:</strong> For high-volume or rapidly growing businesses</li>
+                                            <li><strong>Real-time Dashboards:</strong> 24/7 access to key metrics and KPIs</li>
+                                            <li><strong>Custom Reporting:</strong> Board reports, investor updates, or specific management needs</li>
+                                            <li><strong>Annual Reports:</strong> Year-end comprehensive analysis and tax preparation support</li>
+                                        </ul>
+                                        <p><strong>Standard monthly package includes:</strong></p>
+                                        <ul>
+                                            <li>Profit & Loss Statement</li>
+                                            <li>Balance Sheet</li>
+                                            <li>Cash Flow Statement</li>
+                                            <li>Accounts Receivable Summary</li>
+                                            <li>Accounts Payable Summary</li>
+                                            <li>Budget vs. Actual Analysis (if budget provided)</li>
+                                            <li>Key Performance Indicators Dashboard</li>
+                                        </ul>
+                                        <p>All reports include executive summaries with actionable insights and recommendations.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What level of access do we have to our financial data?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>You maintain <strong>complete ownership and access</strong> to your financial data:</p>
+                                        <ul>
+                                            <li><strong>Real-time Access:</strong> 24/7 access to your accounting software and all financial data</li>
+                                            <li><strong>Admin Rights:</strong> You retain full administrative control of your systems</li>
+                                            <li><strong>Data Portability:</strong> All data is exportable in standard formats at any time</li>
+                                            <li><strong>Cloud Dashboard:</strong> Secure online portal with reports, documents, and communication tools</li>
+                                            <li><strong>Mobile Access:</strong> View key metrics and reports from any device</li>
+                                            <li><strong>Custom Views:</strong> Personalized dashboards based on your role and interests</li>
+                                            <li><strong>Historical Data:</strong> Complete access to all historical records and audit trails</li>
+                                        </ul>
+                                        <p><strong>Collaboration Features:</strong></p>
+                                        <ul>
+                                            <li>Shared document libraries</li>
+                                            <li>Secure messaging system</li>
+                                            <li>Task tracking and approvals</li>
+                                            <li>Automated report delivery</li>
+                                            <li>Integration with your existing business tools</li>
+                                        </ul>
+                                        <p>Your data is always yours - we're simply the stewards who maintain and organize it for you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support and Communication Category -->
+                    <div class="category-section" data-category="support-communication">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+                                </svg>
+                            </div>
+                            <h2 class="category-title">Support and Communication</h2>
+                        </div>
+                        
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">Who will be our primary point of contact?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>You'll have a <strong>dedicated account team</strong> that includes:</p>
+                                        <ul>
+                                            <li><strong>Senior Account Manager:</strong> Your primary contact for strategy, planning, and relationship management</li>
+                                            <li><strong>Lead Bookkeeper:</strong> Certified professional handling day-to-day accounting tasks</li>
+                                            <li><strong>Quality Assurance Manager:</strong> Ensures accuracy and consistency in all deliverables</li>
+                                            <li><strong>Tax Specialist:</strong> Available for tax-related questions and planning</li>
+                                            <li><strong>Industry Expert:</strong> Specialist in your specific business type when applicable</li>
+                                        </ul>
+                                        <p><strong>Communication Preferences:</strong></p>
+                                        <ul>
+                                            <li>Scheduled monthly calls with your account manager</li>
+                                            <li>Direct phone and email access to your team</li>
+                                            <li>Secure messaging through our client portal</li>
+                                            <li>Video conferences for complex discussions</li>
+                                            <li>Emergency contact for urgent matters</li>
+                                        </ul>
+                                        <p>Your account manager remains consistent throughout our partnership, building deep knowledge of your business over time.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How quickly do you respond to questions?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>We pride ourselves on <strong>responsive communication</strong> with guaranteed response times:</p>
+                                        <ul>
+                                            <li><strong>Urgent Issues:</strong> Within 2 hours during business hours</li>
+                                            <li><strong>General Questions:</strong> Within 4 hours during business days</li>
+                                            <li><strong>Complex Analysis:</strong> Within 24 hours with detailed response</li>
+                                            <li><strong>Non-Urgent Requests:</strong> Within 1 business day</li>
+                                            <li><strong>Emergency Support:</strong> 24/7 availability for critical issues</li>
+                                        </ul>
+                                        <p><strong>Business Hours:</strong> Monday-Friday, 8:00 AM - 6:00 PM EST</p>
+                                        <p><strong>Communication Channels:</strong></p>
+                                        <ul>
+                                            <li>Direct phone line to your account manager</li>
+                                            <li>Secure email communication</li>
+                                            <li>Client portal messaging system</li>
+                                            <li>Scheduled video conferences</li>
+                                            <li>Emergency hotline for existing clients</li>
+                                        </ul>
+                                        <p>We track response times and maintain a <strong>95%+ satisfaction rate</strong> for communication quality and timeliness.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">What ongoing support do you provide?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>Our ongoing support goes far beyond basic bookkeeping:</p>
+                                        <ul>
+                                            <li><strong>Strategic Advisory:</strong> Quarterly business reviews with financial insights and recommendations</li>
+                                            <li><strong>Process Improvement:</strong> Regular analysis of your workflows with optimization suggestions</li>
+                                            <li><strong>Compliance Monitoring:</strong> Ongoing tracking of regulatory changes affecting your business</li>
+                                            <li><strong>Technology Updates:</strong> Software upgrades, new feature training, and system optimizations</li>
+                                            <li><strong>Benchmarking:</strong> Industry comparison reports and performance analysis</li>
+                                            <li><strong>Cash Flow Management:</strong> Proactive monitoring and forecasting support</li>
+                                            <li><strong>Tax Planning:</strong> Year-round tax optimization strategies</li>
+                                            <li><strong>Growth Support:</strong> Financial planning for expansion, hiring, or investments</li>
+                                        </ul>
+                                        <p><strong>Additional Services Available:</strong></p>
+                                        <ul>
+                                            <li>CFO-level strategic consulting</li>
+                                            <li>Investor presentation preparation</li>
+                                            <li>Loan application support</li>
+                                            <li>Merger & acquisition financial analysis</li>
+                                            <li>Custom training for your team</li>
+                                        </ul>
+                                        <p>Our goal is to be your trusted financial partner, not just a service provider.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="question-text">How do you handle urgent requests or issues?</span>
+                                    <div class="faq-toggle">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        <p>We have a <strong>dedicated urgent response protocol</strong> for time-sensitive matters:</p>
+                                        <ul>
+                                            <li><strong>Emergency Hotline:</strong> Direct phone line with 2-hour response guarantee</li>
+                                            <li><strong>Escalation Process:</strong> Automatic routing to senior management for critical issues</li>
+                                            <li><strong>Same-Day Resolution:</strong> Commitment to address urgent matters within business hours</li>
+                                            <li><strong>Weekend Support:</strong> Available for truly critical situations</li>
+                                            <li><strong>Rush Processing:</strong> Expedited handling of time-sensitive reports or filings</li>
+                                        </ul>
+                                        <p><strong>Examples of urgent situations we handle:</strong></p>
+                                        <ul>
+                                            <li>Loan application deadlines</li>
+                                            <li>Investor due diligence requirements</li>
+                                            <li>Tax filing deadlines</li>
+                                            <li>Audit preparation</li>
+                                            <li>Cash flow crises</li>
+                                            <li>Payroll emergencies</li>
+                                            <li>Compliance deadline issues</li>
+                                        </ul>
+                                        <p><strong>Response Protocol:</strong></p>
+                                        <ul>
+                                            <li>Immediate acknowledgment of urgent request</li>
+                                            <li>Assessment and resource allocation within 1 hour</li>
+                                            <li>Regular updates every 2 hours until resolution</li>
+                                            <li>Post-resolution review to prevent future issues</li>
+                                        </ul>
+                                        <p>Our team understands that financial emergencies can't wait, and we're equipped to respond accordingly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta-section">
+            <div class="contact-cta-container">
+                <h2 class="cta-title">Still Have Questions?</h2>
+                <p class="cta-description">
+                    Can't find the answer you're looking for? Our team is here to help with personalized answers to your specific questions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary">Contact Our Team</a>
+                    <a href="mailto:hello@prixetic.com?subject=FAQ%20Question&body=Hi%20Prixetic%20Team,%0A%0AI%20have%20a%20question%20that%20wasn't%20covered%20in%20your%20FAQ:%0A%0A[Please%20describe%20your%20question%20here]%0A%0ACompany:%20%0APhone:%20%0A%0AThank%20you!" class="btn-secondary">Email Your Question</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                        answer.classList.remove('active');
+                    } else {
+                        item.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        document.getElementById('faqSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const categorySection = document.querySelectorAll('.category-section');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            if (searchTerm === '') {
+                // Show all categories and items
+                categorySection.forEach(section => {
+                    section.style.display = 'block';
+                });
+                faqItems.forEach(item => {
+                    item.style.display = 'block';
+                    // Remove highlights
+                    const questionText = item.querySelector('.question-text');
+                    const answerContent = item.querySelector('.faq-answer-content');
+                    questionText.innerHTML = questionText.textContent;
+                    if (answerContent) {
+                        answerContent.innerHTML = answerContent.textContent;
+                    }
+                });
+                return;
+            }
+            
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('.question-text');
+                const answerContent = item.querySelector('.faq-answer-content');
+                const questionContent = questionText.textContent.toLowerCase();
+                const answerTextContent = answerContent ? answerContent.textContent.toLowerCase() : '';
+                
+                if (questionContent.includes(searchTerm) || answerTextContent.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    
+                    // Highlight matching terms
+                    const regex = new RegExp(`(${searchTerm})`, 'gi');
+                    questionText.innerHTML = questionText.textContent.replace(regex, '<span class="highlight-text">$1</span>');
+                    if (answerContent) {
+                        answerContent.innerHTML = answerContent.textContent.replace(regex, '<span class="highlight-text">$1</span>');
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Hide categories that have no visible items
+            categorySection.forEach(section => {
+                const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"])');
+                if (visibleItems.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.category-section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading state
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Auto-expand first FAQ item in each category (optional)
+        // Uncomment if you want the first item in each category to be open by default
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstItems = document.querySelectorAll('.category-section .faq-item:first-child');
+            firstItems.forEach(item => {
+                item.classList.add('active');
+                item.querySelector('.faq-answer').classList.add('active');
+            });
+        });
+        */
+    </script>
+</body>
+
+</html>
